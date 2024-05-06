@@ -1,97 +1,51 @@
-import { Card, CardActionArea, CardContent } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import { Grid } from "@mui/material";
+import { DisplayCharacters } from "./DisplayCharacters";
+import {
+	ApolloClient,
+	InMemoryCache,
+	ApolloProvider,
+	gql,
+} from "@apollo/client";
+
+export const client = new ApolloClient({
+	uri: "https://rickandmortyapi.com/graphql",
+	cache: new InMemoryCache(),
+});
+
+export const GET_CHARACTERS = gql`
+  query GetCharacters {
+    characters(page: 1, filter: { name: "morty" }) {
+      info {
+        count
+      }
+      results {
+        id
+        name
+        image
+      }
+    }
+    location(id: 1) {
+      id
+      name
+      type
+      dimension
+    }
+    episodesByIds(ids: [1, 2]) {
+      id
+    }
+  }
+`;
 
 export default function Main() {
 	return (
-		<main className="w-full p-24">
-			<h1>Main first</h1>
-			<Card sx={{ maxWidth: 300 }} variant="elevation">
-				<CardActionArea>
-					<CardContent>
-						<Typography gutterBottom variant="h5" component="div" color="green">
-							Card Title
-						</Typography>
-						<Typography variant="body2" color="text.secondary">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-							obcaecati molestias, nam fuga saepe accusantium et vero aliquam
-							qui nulla, quisquam quidem neque voluptate esse tempore, accusamus
-							quae quaerat excepturi!
-						</Typography>
-					</CardContent>
-				</CardActionArea>
-			</Card>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
+		<main className="w-full p-24 pt-44">
+			<div className="flex">
+				<Grid container spacing={2} rowSpacing={2} columnSpacing={2}>
+					<ApolloProvider client={client}>
+						<DisplayCharacters />
+					</ApolloProvider>
+				</Grid>
 			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam
-				asperiores esse odio fugit nostrum dolorum cum, a iusto suscipit
-				deleniti quod distinctio quia blanditiis nulla neque sed placeat.
-				Aliquid, blanditiis?
-			</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main</div>
-			<div>Main last</div>
 		</main>
 	);
 }

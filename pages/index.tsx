@@ -10,7 +10,7 @@ export default function Home() {
 	return (
 		<div className={`${inter.className}`}>
 			<Head>
-				<title>Wodka42</title>
+				<title>W42 - Rick&#38;Morty</title>
 			</Head>
 			<Header />
 			<Main />

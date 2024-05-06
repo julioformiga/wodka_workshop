@@ -14,7 +14,7 @@ export const client = new ApolloClient({
 
 export const GET_CHARACTERS = gql`
   query GetCharacters {
-    characters(page: 1, filter: { name: "morty" }) {
+    characters(page: 1, filter: { name: "rick" }) {
       info {
         count
       }

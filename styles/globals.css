@@ -31,3 +31,37 @@ body {
     text-wrap: balance;
   }
 }
+
+nav.header {
+  @apply w-full
+    flex
+    bg-green-900/90
+    shadow-white
+    fixed
+    top-0
+    z-50
+    py-10
+    px-24
+    text-center
+    backdrop-blur-lg;
+  box-shadow: #b6e52a 0px 0px 15px 0px;
+}
+
+.darkModeSelector {
+  @apply bg-gray-800
+        dark:bg-gray-50
+        hover:bg-gray-600
+        dark:hover:bg-gray-300
+        text-white
+        dark:text-gray-800
+        fixed
+        px-0
+        py-2
+        top-[-7]
+        right-20
+        transition-all
+        duration-100
+        md:text-xs
+        rounded-lg
+        text-xs;
+}

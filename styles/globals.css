@@ -55,10 +55,9 @@ nav.header {
         text-white
         dark:text-gray-800
         fixed
-        px-0
         py-2
-        top-[-7]
-        right-20
+        top-[-8]
+        right-24
         transition-all
         duration-100
         md:text-xs
